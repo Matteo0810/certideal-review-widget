@@ -1,0 +1,359 @@
+*, *::before, *::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: "guilroy-bold";
+    src: url(./fonts/guilroy-bold.ttf);
+}
+@font-face {
+    font-family: "guilroy-regular";
+    src: url(./fonts/guilroy-regular.ttf);
+}
+
+:root {
+    --dark-blue: #150F35;
+    --skye-blue: #4CAFF7;
+    --green: #339F76;
+    --yellow: #FFF17D;
+    --orange: #F85548;
+
+    --radius: 14px;
+}
+
+body {
+    font-family: "guilroy-regular", sans-serif;
+    color: var(--dark-blue);
+}
+
+h1, h2 {
+    font-family: "guilroy-bold", sans-serif;
+}
+
+video,
+#next-video,
+#previous-video {
+    border-radius: var(--radius);
+    object-fit: cover;
+
+    /* DEFAULT VIDEO SIZE */
+    width: 20em;
+    height: 30em;
+
+    background-color: black;
+}
+
+/* ICONS */
+.icon {
+    display: block;
+    width: 30px;
+    height: 30px;
+
+    background-size: cover;
+    background-position: center;
+
+    cursor: pointer;
+}
+.icon.close {
+    background-image: url(icons/close.svg);
+}
+.icon.play {
+    background-image: url(icons/play.svg);
+}
+.icon.pause {
+    background-image: url(icons/pause.svg);
+}
+.icon.arrow-up {
+    background-image: url(icons/arrow-up.svg);
+}
+.icon.arrow-down {
+    background-image: url(icons/arrow-down.svg);
+}
+.icon.star {
+    background-image: url(icons/star.svg);
+}
+/* ICONS */
+
+/* WRAPPER */
+.review-wrapper {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100vh;
+}
+/* WRAPPER */
+
+/* REVIEWS */
+.reviews {
+    display: grid;
+}
+.reviews>article {
+    box-shadow: 0 0 8px 0 rgba(70,65,160,0.1);
+    padding: 1.5em;
+
+    width: 50em;
+    border-radius: var(--radius);
+    margin: .5em 0;
+}
+.reviews>article>span {
+    font-size: .5em;
+}
+.reviews>article>header {
+    display: flex;
+    justify-content: space-between;
+}
+.reviews>article>header>div {
+    display: flex;
+}
+.reviews>article>header>div>.icon {
+    width: 15px;
+    height: 15px;
+    margin: .1em;
+}
+.reviews>article>p {
+    border-top: 2px solid var(--yellow);
+    margin-top: 1em;
+    padding-top: 1em;
+}
+/* REVIEWS */
+
+/* NEW FEATURE PANEL */
+.new-feature {
+    box-shadow: 0 0 8px 0 rgba(70,65,160,0.1);
+    padding: 1em 1em;
+    border-radius: var(--radius);
+}
+.new-feature>h3.new {
+    background-color: var(--orange);
+    color: white;
+
+    padding: .5em 1em;
+    border-radius: var(--radius);
+    width: fit-content;
+
+    font-size: .9em;
+}
+.new-feature>h4 {
+    max-width: 20em;
+}
+.new-feature>.center {
+    display: grid;
+    justify-content: center;
+    margin-top: 2em;
+}
+.new-feature>.center>video.preview {
+    cursor: pointer;
+}
+/* NEW FEATURE PANEL */
+
+/* WIDGET */
+.widget {
+    display: none;
+    background-color: #00000091;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100vh;
+
+    z-index: 3;
+
+    animation: widget-appear .5s forwards;
+}
+.widget.disappear {
+    animation: widget-disappear .5s forwards;
+}
+.widget>.player>.controllers {
+    position: absolute;
+    right: -20%;
+    bottom: 1%;
+
+    z-index: 3;
+}
+.widget>.player>.controllers>button {
+    border-radius: 100px;
+    background-color: var(--dark-blue);
+
+    padding: .5em;
+    border: unset;
+    display: block;
+    cursor: pointer;
+}
+.widget>.player>.controllers>button {
+    margin-bottom: .5em;
+}
+.widget>.player>.controllers>#controller-previous {
+    display: none;
+}
+.widget>.player>.controllers>button>.icon {
+    filter: invert(1);
+}
+.widget>.player {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+}
+.widget>.player>#current-video {
+    z-index: 99;
+}
+.widget>.player>header,
+.widget>.player>.progress-bar {
+    opacity: 0;
+    transition: opacity .3s ease;
+}
+.widget>.player:hover>header,
+.widget>.player:hover>.progress-bar {
+    opacity: 1;
+}
+.widget>.player>header>.icon {
+    position: absolute;
+    top: 2%;
+
+    filter: invert(1);
+    cursor: pointer;
+    z-index: 2;
+}
+.widget>.player>header>#toggleVideo {
+    left: 3%;
+}
+.widget>.player>header>#closeWidget {
+    right: 3%;
+}
+.widget>.player>video,
+.widget>#next-video,
+.widget>#previous-video {
+    width: 20em;
+    height: 32em;
+}
+.widget>.player>.progress-bar {
+    width: 90%;
+    height: 5px;
+
+    background-color: var(--dark-blue);
+    position: absolute;
+    bottom: .9em;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    border-radius: var(--radius);
+}
+.widget>.player>.progress-bar>.progression {
+    background-color: var(--orange);
+    border-radius: var(--radius);
+
+    height: 100%;
+    width: 0;
+}
+.widget>#next-video,
+.widget>#previous-video {
+    position: absolute;
+    top: 127%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+}
+.widget>#previous-video {
+    top: -27%;
+    display: none;
+}
+.widget>.player.disappear-bottom {
+    animation: current-disappear-bottom .5s forwards;
+}
+.widget>.player.disappear-top {
+    animation: current-disappear-top .5s forwards;
+}
+
+.widget>#next-video.appear {
+    animation: next-appear-bottom .5s forwards;
+}
+.widget>#previous-video.appear {
+    animation: next-appear-top .5s forwards;
+}
+
+@keyframes widget-appear {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes widget-disappear {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes current-disappear-bottom {
+    from {
+        top: 50%;
+    }
+    to {
+        top: -27%;
+    }
+}
+@keyframes next-appear-bottom {
+    from {
+        top: 127%;
+    }
+    to {
+        top: 50%;
+    }
+}
+
+@keyframes current-disappear-top {
+    from {
+        top: 50%;
+    }
+    to {
+        top: 127%;
+    }
+}
+@keyframes next-appear-top {
+    from {
+        top: -27%;
+    }
+    to {
+        top: 50%;
+    }
+}
+/* WIDGET */
+
+
+/* RESPONSIVE */
+@media screen and (max-width: 1195px) {
+    .reviews>article {
+        width: 32em;
+    }
+}
+@media screen and (max-width: 891px) {
+    .reviews>article {
+        width: 22em;
+    }
+}
+@media screen and (max-width: 755px) {
+    .review-wrapper {
+        flex-wrap: wrap;
+        margin: 1em 0;
+    }
+}
+
+@media screen and (max-width: 410px) {
+    .widget #current-video,
+    .widget>#next-video,
+    .widget>#previous-video {
+        width: 20em;
+        height: 28em;
+    }
+}
+/* RESPONSIVE */

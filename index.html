@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="main.css" type="text/css">
+
+    <title>Certideal reviews video feature</title>
+</head>
+<body>
+
+    <div class="widget">
+        <div id="previous-video"></div>
+
+        <article class="player">
+            <header>
+                <span id="toggleVideo" class="icon play"></span>
+                <span id="closeWidget" class="icon close"></span>
+            </header>
+            <video id="current-video" autoplay>
+                <source src="videos/video-1.mp4">
+                Votre navigateur ne supporte pas les vidéos
+            </video>
+            <div class="progress-bar">
+                <div class="progression"></div>
+            </div>
+
+            <div class="controllers">
+                <button id="controller-previous">
+                    <span class="icon arrow-up"></span>
+                </button>
+                <button id="controller-next">
+                    <span class="icon arrow-down"></span>
+                </button>
+            </div>
+        </article>
+
+        <div id="next-video"></div>
+    </div>
+
+    <div class="review-wrapper">
+        <div class="new-feature">
+            <h3 class="new">Nouveau !</h3>
+            <h2>Découvrez les avis vidéos</h2>
+            <h4>Cliquez ici et scrollez pour découvrir les avis vérifiés des clients en vidéo !</h4>
+
+            <div class="center">
+                <video class="preview">
+                    <source src="videos/video-1.mp4">
+                    Votre navigateur ne supporte pas les vidéos
+                </video>
+            </div>
+        </div>
+        <section class="reviews">
+            <article>
+                <header>
+                    <span>Corine F.</span>
+                    <div>
+                        <span class="icon star"></span>
+                        <span class="icon star"></span>
+                        <span class="icon star"></span>
+                        <span class="icon star"></span>
+                    </div>
+                </header>
+                <span>23/05/23</span>
+                <p>
+                    Réception rapide du colis. Le câble commandé en supplément avait un soucis et le SAV a été très efficace et a renvoyé un câble ...
+                </p>
+            </article>
+            <article>
+                <header>
+                    <span>Karim A.</span>
+                    <div>
+                        <span class="icon star"></span>
+                        <span class="icon star"></span>
+                        <span class="icon star"></span>
+                        <span class="icon star"></span>
+                    </div>
+                </header>
+                <span>23/05/23</span>
+                <p>
+                    Ok ras
+                </p>
+            </article>
+            <article>
+                <header>
+                    <span>Frederic G.</span>
+                    <div>
+                        <span class="icon star"></span>
+                        <span class="icon star"></span>
+                        <span class="icon star"></span>
+                        <span class="icon star"></span>
+                    </div>
+                </header>
+                <span>23/05/23</span>
+                <p>
+                    Très bien, téléphone conforme à la description, la batterie à l'air Ok, il reste à voir dans le temps.
+                </p>
+            </article>
+            <article>
+                <header>
+                    <span>Didier B.</span>
+                    <div>
+                        <span class="icon star"></span>
+                        <span class="icon star"></span>
+                        <span class="icon star"></span>
+                        <span class="icon star"></span>
+                    </div>
+                </header>
+                <span>23/05/23</span>
+                <p>
+                    Bon produit, garantie de deux ans, atelier de remise en état situé en France, rapidité d'envoi.
+                </p>
+            </article>
+        </section>
+    </div>
+
+    <script src="global.config.js"></script>
+    <script defer src="widget.js"></script>
+
+</body>
+</html>
